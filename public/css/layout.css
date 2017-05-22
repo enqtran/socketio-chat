@@ -6,6 +6,7 @@ body {
     background: #eee;
     width: 100%;
     overflow-x: auto;
+    padding: 10px;
 }
 
 #boxContent {

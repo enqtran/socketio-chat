@@ -1,10 +1,11 @@
-//https://enqtran-chat.herokuapp.com/
+//https://enqtran-chat.herokuapp.com
 //http://localhost:8888
 var socket = io("https://enqtran-chat.herokuapp.com");
 
 socket.on("server-send-Username-thatbai", function () {
     alert('dk that bai');
 });
+
 socket.on("server-send-Username-thanhcong", function (data) {
     $('#currentUser').html(data);
     $('#loginForm').hide(2000);
@@ -20,8 +21,10 @@ socket.on("server-send-danhsach-user", function (data) {
     });
 
 });
+
 socket.on("server-send-messages", function (data) {
-    $('#listMessages').append("<div class='ms'>" + data.username + " : " + data.content + "</div>")
+    $('#listMessages').append("<div class='ms'>" + data.username + " : " + data.content + "</div>");
+    $('#listMessages').animate({ scrollTop: $('#listMessages').prop("scrollHeight") }, 500);
 });
 
 socket.on("server-send-typing", function (data) {
@@ -38,6 +41,9 @@ socket.on("all-room", function (data) {
     $('#listRoom').html('');
     data.map(function (r) {
         $('#listRoom').append("<h4 class='room'>" + r + "</h4>");
+
+        $('#listRoom').animate({ scrollTop: $('#listRoom').prop("scrollHeight") }, 500);
+
     });
 });
 
@@ -45,7 +51,7 @@ socket.on("sv-send-room", function (data) {
     $('#roomHienTai').html(data);
 });
 
-socket.on("server-chat", function(data){
+socket.on("server-chat", function (data) {
     $('#roomListMessages').append("<div class='msr'>" + data.username + " : " + data.content + "</div>")
 });
 
@@ -77,8 +83,10 @@ jQuery(document).ready(function ($) {
     });
 
     $('#btnSendMessages').click(function () {
-        socket.emit("client-send-messages", $('#txtMessages').val());
-        $('#txtMessages').val('');
+        if ($('#txtMessages').val() != '') {
+            socket.emit("client-send-messages", $('#txtMessages').val());
+            $('#txtMessages').val('');
+        }
     });
 
 
@@ -89,8 +97,11 @@ jQuery(document).ready(function ($) {
     });
 
     $('#btnSendMessagesRoom').click(function () {
-        socket.emit("user-chat", $('#txtMessagesRoom').val());
-        $('#txtMessagesRoom').val('');
+        if ($('#txtMessagesRoom').val() != '') {
+            socket.emit("user-chat", $('#txtMessagesRoom').val());
+            $('#txtMessagesRoom').val('');
+        }
+
     });
 
 
