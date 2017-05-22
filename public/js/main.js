@@ -1,4 +1,4 @@
-var socket = io("http://localhost:3000");
+var socket = io("https://enqtran-chat.herokuapp.com");
 
 socket.on("server-send-Username-thatbai", function () {
     alert('dk that bai');
