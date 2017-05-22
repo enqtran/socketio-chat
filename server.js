@@ -6,12 +6,15 @@ app.set("views", "./views");
 
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
-server.listen(3000);
+
+var port = Number(process.env.PORT || 8888);
+server.listen(port);
 
 var arrUser = [];
 
 io.on("connection", function (socket) {
     console.log("Co ket noi " + socket.id);
+    console.log(socket.adapter.rooms);
 
     socket.on("client-send-Username", function (data) {
         if (arrUser.indexOf(data) >= 0) {
@@ -45,6 +48,26 @@ io.on("connection", function (socket) {
     socket.on("typing-out", function () {
         socket.broadcast.emit("server-stop-typing");
     });
+
+
+    socket.on("client-tao-room", function (data) {
+        socket.join(data);
+        socket.phong = data;
+
+        var arrRoom = [];
+        for (r in socket.adapter.rooms) {
+            arrRoom.push(r);
+        }
+
+        io.sockets.emit("all-room", arrRoom);
+        io.sockets.emit("sv-send-room", data);
+    });
+
+    socket.on("user-chat", function(data){
+        io.sockets.in(socket.phong).emit("server-chat",{ username: socket.Username, content: data });
+    });
+
+
 
 
 });

@@ -1,7 +1,7 @@
 body {
     background-color: #ccc;
 }
-#listMessages {
+#listMessages, #roomListMessages {
     height: 300px;
     background: #eee;
     width: 100%;
