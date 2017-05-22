@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chat</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/layout.css">
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="container">
+
+            <div id="loginForm">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Your name</h3>
+                        <input type="text" id="txtUsername" />
+                        <input type="button" value="Register" id="btnRegister" />
+                    </div>
+                </div>
+            </div>
+
+            <div id="chatForm">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div id="boxContent">
+
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div id="sayHi">
+                            Helle <span id="currentUser">Anh</span>
+                            <input type="button" value="Logout" id="btnLogout" />
+                        </div>
+
+                        <div id="listMessages">
+
+                        </div>
+
+                        <div id="typing"></div>
+
+                        <div class="control">
+                            <input type="text" id="txtMessages" />
+                            <input type="button" value="Send" id="btnSendMessages" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- // row -->
+        </div>
+    </div>
+</body>
+
+</html>

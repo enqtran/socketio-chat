@@ -1,0 +1,14 @@
+body {
+    background-color: #ccc;
+}
+#listMessages {
+    height: 300px;
+    background: #eee;
+    width: 100%;
+}
+
+#boxContent {
+    background: #eee;
+    margin-top: 27px;
+    padding: 20px;
+}
