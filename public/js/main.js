@@ -41,9 +41,6 @@ socket.on("all-room", function (data) {
     $('#listRoom').html('');
     data.map(function (r) {
         $('#listRoom').append("<h4 class='room'>" + r + "</h4>");
-
-        $('#listRoom').animate({ scrollTop: $('#listRoom').prop("scrollHeight") }, 500);
-
     });
 });
 
@@ -52,7 +49,9 @@ socket.on("sv-send-room", function (data) {
 });
 
 socket.on("server-chat", function (data) {
-    $('#roomListMessages').append("<div class='msr'>" + data.username + " : " + data.content + "</div>")
+    $('#roomListMessages').append("<div class='msr'>" + data.username + " : " + data.content + "</div>");
+
+    $('#roomListMessages').animate({ scrollTop: $('#listRoom').prop("scrollHeight") }, 500);
 });
 
 
