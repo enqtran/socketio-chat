@@ -1,6 +1,6 @@
 //https://enqtran-chat.herokuapp.com
 //http://localhost:8888
-var socket = io("http://localhost:8888");
+var socket = io("https://enqtran-chat.herokuapp.com");
 
 socket.on("server-send-Username-thatbai", function () {
     alert('dk that bai');
