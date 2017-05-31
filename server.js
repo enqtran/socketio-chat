@@ -12,6 +12,8 @@ server.listen(port);
 
 var arrUser = [];
 
+console.log(port);
+
 io.on("connection", function (socket) {
     console.log("Co ket noi " + socket.id);
     console.log(socket.adapter.rooms);
